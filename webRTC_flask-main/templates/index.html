@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your APP</title>
+</head>
+<body>
+    <h1>WebRTC Video Stream</h1>
+    <div>
+        <label for="videoSource">Choose video source:</label>
+        <select id="videoSource">
+            <option value="camera">Camera</option>
+            <option value="file">Video File</option>
+        </select>
+        <input type="file" id="videoFile" style="display:none;" accept="video/*">
+    </div>
+    <button id="startButton">Start Stream</button>
+    <video id="remoteVideo" autoplay playsinline></video>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script>
+        document.getElementById('videoSource').addEventListener('change', function() {
+            if (this.value === 'file') {
+                document.getElementById('videoFile').style.display = 'block';
+            } else {
+                document.getElementById('videoFile').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
